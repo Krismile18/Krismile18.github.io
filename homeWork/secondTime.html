@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 		班级：21 Java1 班
+					学号：219970825
+					姓名：邱光雄 
+					-->
+		<script>
+			// 严格模式
+			// "use strict"
+			
+			
+			// 1．编写代码调用如下函数，将函数调用的代码和结果记录在实验报告中。
+			console.log("1．运行结果如下");
+			// 定义式,定义一个getsum函数用来计算两数之和,初始化时就被预加载
+			function getSum(num1,num2){
+				// 计算两个数的和
+				var sum=num1+num2;
+				// 输出两个数的和
+				console.log(num1+"+"+num2+"="+(num1+num2));
+			}
+			// 调用getSum方法,传递两个参数
+			getSum(1,2);
+			
+			
+			// 2．运行如下代码，如果运行正确则记录运行结果；如果报错，则修改代码，记录下错误原因。
+			// getProduct这个函数式是变量式，不会被预加载，在此处调用时不会被检测到，调用需要放在函数体后面
+				// getProduct(2,4);
+			// 变量式,定义一个getProduct函数用来计算两数之乘积,
+			console.log("2．运行结果如下");
+			var getProduct=function(num1,num2){
+				// 输出两个数的乘积
+				console.log(num1+"*"+num2+"="+(num1*num2));
+			}
+			// 修改后，调用此方法，调用getProduct方法,传递两个参数
+			getProduct(2,4);
+		
+		
+			// 3.先阅读如下代码，思考输出的结果是什么？运行并记录输出结果。
+			console.log("3．运行结果如下");
+			var a=100;
+			// 定义式,初始化时就被预加载，作用输出a的情况
+			function test(){
+				// var a;
+				console.log(a);
+				// 注意如果a前面加入var，变量将会提升到本函数的顶部，而为被赋值，直到此行才赋值
+				a=10;
+				console.log(a);
+			}
+			test();
+			console.log(a);
+			// 输出结果：100 10 10
+			// 输出结果原因：先输出100是因为test()函数被初始化时被预加载，但是，调用的时候a已经被赋值为100，所以第一个输出100，但下一行讲a定义为全局变量，并将值赋为10，所以后两个为10
+			
+			
+			// 4.先阅读如下代码，思考输出的结果是什么？运行并记录输出结果。
+				console.log("4．运行结果如下");
+			var a=10;
+			fun1();
+			function fun1(){
+				var b=20;
+				// 输出a,但函数中已经定义了a，将其变量提升到了函数体顶部，但未被赋值所以输出undefined
+				console.log(a);
+				// 输出b,20
+				console.log(b);
+				var a=30;
+			}
+			// 输出结果:undefined、20
+			
+			
+			// 5．运行如下代码，看看是否报错。
+			console.log("5．运行结果如下");
+			function fun2(a,b){
+				console.log(arguments[0]);
+				console.log(arguments[1]);
+				console.log(arguments[2]);
+			console.log("6．运行结果如下");
+				// 6.尝用for···in的循环语句打印输出第5步中fun2调用时的参数，将记录实验代码。
+				for (let arg in arguments) {
+				    console.log(arguments[arg]);
+				  }
+			}
+			// 未报错
+			fun2(1,2,3);
+		
+			
+			
+			
+			
+		</script>
+		<script>
+				// 7．运行如下代码，并记录输出结果和原因。
+				// 严格模式
+				"use strict";
+				console.log("7．运行结果如下");
+				// 没有使用var 声明的变量不能使用 会报错
+				num=100;
+				
+				
+				// 8．自行编写一段严格模式下报错的代码，记录代码并说明报错原因。
+				// aa这个参数为被定义
+				console.log("8．运行结果如下");
+				console.log(aa);
+					
+			
+				// 9．为第8步中的错误代码添加try···catch语句块，友好显示错误信息。
+				console.log("9．运行结果如下");
+				try{
+					 console.log(aa);
+			   }catch(e){ 
+					console.log("代码错误");
+				} 
+				
+		</script>
+	</body>
+</html>

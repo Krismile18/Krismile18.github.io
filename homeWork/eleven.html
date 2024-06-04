@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <!-- 引入外部CSS样式表 -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- 引入jQuery库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 引入外部JavaScript脚本 -->
+    <script src="../js/scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>注册</h2>
+        <!-- 注册表单 -->
+        <form id="registerForm">
+            <!-- 用户名输入框 -->
+            <div class="form-group">
+                <label for="username">用户名:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <!-- 电子邮箱输入框 -->
+            <div class="form-group">
+                <label for="email">电子邮箱:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <!-- 密码输入框 -->
+            <div class="form-group">
+                <label for="password">密码:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <!-- 确认密码输入框 -->
+            <div class="form-group">
+                <label for="confirmPassword">确认密码:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+        
+            <!-- 提交按钮 -->
+            <button type="submit">注册</button>
+        </form>
+        <!-- 显示消息的div -->
+        <div id="message"></div>
+    </div>
+</body>
+</html>

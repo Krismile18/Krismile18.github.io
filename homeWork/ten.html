@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        input {
+            font-size: 26px;
+            margin-top: 20px;
+        }
+
+        body {
+            background-image: url(../img/grassland.png);
+        }
+
+        #myCharacter {
+            position: absolute;
+            left: 10px;
+            top: 100px
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="myCharacter" src="../img/player2.gif" alt="人物">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myCharacter = $("#myCharacter");
+            var step = 10;
+
+
+            $(document).on("keydown", function (event) {
+                var keyCode = event.keyCode;
+
+                switch (keyCode) {
+                    case 87: // W
+                        moveCharacter(0, -step, "/playerbig_right.gif");
+                        break;
+                    case 83: // S
+                        moveCharacter(0, step, "playerbig_right.gif");
+                        break;
+                    case 65: // A
+                        moveCharacter(-step, 0, "playerbig_left.gif");
+                        break;
+                    case 68: // D
+                        moveCharacter(step, 0, "/playerbig_right.gif");
+                        break;
+                    case 32: //空格变身
+                        moveCharacter(0,0,"player1_big.gif")
+                }
+            });
+
+            // 移动角色
+            function moveCharacter(dx, dy, direction) {
+                var newX = myCharacter.offset().left + dx;
+                var newY = myCharacter.offset().top + dy;
+
+                // 检查是否超出边界
+                if (newX < 0 || newX + myCharacter.width() > $(window).width() ||
+                    newY < 0 || newY + myCharacter.height() > $(window).height()) {
+                    return; // 如果超出边界，结束函数，即阻止移动
+                }
+
+                myCharacter.css({ left: newX + "px", top: newY + "px" });
+                myCharacter.attr("src", "../img/" + direction);
+            }
+        })
+    </script>
+
+<!-- 219970204 邱光雄 -->
+</body>
+
+</html>

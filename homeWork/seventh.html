@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<div class="time"></div>
+	<script>
+		function obtainTime() {
+			// 获取时间
+			let date = new Date();
+			// 获取小时
+			let hour = date.getHours();
+			// 获取分钟
+			let minute = date.getMinutes();
+			// 获取秒
+			let second = date.getSeconds();
+			// 对小时进行判断
+			let outputnumber = '';
+			if (hour < 10)
+				outputnumber += '0' + hour + ':';
+			else
+				outputnumber += hour + ':';
+			// 对分钟进行判断
+			if (minute < 10)
+				outputnumber += '0' + minute + ':';
+			else
+				outputnumber += minute + ':';
+			// 对秒进行判断
+			if (second < 10)
+				outputnumber += '0' + second;
+			else outputnumber += second;
+			// 输出
+			document.getElementsByClassName('time')[0].innerHTML = outputnumber;
+		}
+		// 每秒刷新一次
+		setInterval(obtainTime, 1000);
+	</script>
+</body>
+
+</html>

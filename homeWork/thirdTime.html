@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+	</head>
+	<body>
+		
+	<!-- 	学号：219970825
+		班级：21Java1班
+		姓名：邱光雄 -->
+		<!-- 闭包 -->
+		<script>
+			// 闭包
+			console.log("闭包");
+			function fn()
+			{
+				var times=0;
+				var c=function()
+				{
+					return times++;
+				};
+				return c;
+			}
+			var count=fn();
+			console.log(count());
+			console.log(count());
+			
+			// 1.Number()
+				console.log("1.(1)Number");
+				// 可以将值转换为数值类型,如果转换失败则返回 NaN
+			console.log(Number(true),Number(null),+undefined);
+			
+			// 2.Boolean()
+				console.log("1.(2)Boolean");
+				// 可以将值转换为布尔类型,0、-0、null、false、NaN、''、"" 被转换为 false,其他值被转换为 true
+			console.log(Boolean('100'),Boolean(100),Boolean(null),!!undefined);
+			
+			// 3.parseInt()
+				console.log("1.(3)parseInt");
+				// 这是一个内置函数,用于将字符串转换为整数
+			console.log(parseInt(123.6),parseInt(0b1011011),parseInt(0x2A),parseInt(0x2A,8));
+			
+			// 4.parseFloat()
+				console.log("1.(4)parseFloat");
+				// 是一个内置函数,用于将字符串转换为浮点数
+			console.log(parseFloat('123.6'),parseFloat('100px'),parseFloat(010));
+			
+			// 5.eval()
+				console.log("1.(5)eval");
+				// 用于计算一个字符串的代码
+			console.log(eval('87*99+2'));
+			
+			// 6.isNaN()
+				console.log("1.(6)isNaN");
+				// 用于判断一个值是否是 NaN(非数值)
+			console.log(isNaN(null),isNaN('123'),isNaN('abc'),isNaN('a1b2c3'));
+			
+			console.log("2.(1)运行结果如下");
+				var arr1=[];
+				console.log(arr1,arr1.length);
+				var arr2=[1,2,3];
+				console.log(arr2[0],arr2.length);
+				var arr3=new Array();
+				console.log(arr3[1],arr3.length);
+				
+				
+				// shift()	删除并返回数组的第一个元素。
+				arr2.shift();
+				console.log("2.(2)删除后代码");
+				for (var i=0;i<arr2.length;i++) {
+						console.log(arr2[i]);
+				}
+		</script>
+		<!-- <div id="time"></div> --> 
+		 <script>
+			console.log("3.时间代码");
+			// function updateTime() {
+				  var currentTime = new Date();
+				  var hours = currentTime.getHours();
+				  var minutes = currentTime.getMinutes();
+				  var seconds = currentTime.getSeconds();
+				  console.log(hours+":"+minutes);
+				  // 在显示的小时、分钟和秒钟数字前添加前导零
+			// 	  hours = (hours < 10 ? "0" : "") + hours;
+			// 	  minutes = (minutes < 10 ? "0" : "") + minutes;
+			// 	  seconds = (seconds < 10 ? "0" : "") + seconds;
+			// 	  // 格式化时间
+			// 	  var timeString = hours + ":" + minutes + ":" + seconds;
+			// 	  // 将时间显示在页面上
+			// 	  document.getElementById("time").innerHTML = timeString;
+			// 	}	
+			// // 初次加载时立即调用一次
+			// 	updateTime();
+			// 	// 每秒更新时间
+			// 	setInterval(updateTime, 1000);
+		</script> 
+		<script>
+				console.log("4.(1)运行后结果");
+				var reg1=/^\d{4}$/;
+				console.log(reg1.test('1234'),
+				reg1.test('1a34'),
+				reg1.test('12345'))
+				
+				console.log("4.(2)运行后结果");
+				var reg2=new RegExp("^[sp]\\d{1,4}$","i");
+				console.log(reg2.test('p123'),
+				reg2.test('1234'),
+				reg2.test('s10'))
+				
+				console.log("4.(3)运行后结果");
+				// 利用 正则表达式判断是否是电信号码
+				function isChinaTelecomMobile(str) {
+					// 电信号码的固定格式
+					// \d{8} 表示匹配连续 8 个数字。
+					// 其中 \d 是一个元字符,表示匹配任意一个数字字符。
+					// {8} 是限定符,表示前面的模式需要连续重复 8 次。
+					// $ 表示匹配字符串的结束位置。
+				  const regex = /^(133|153|189|180)\d{8}$/;
+				  // 利用test来测试是否符合相关标准
+				  return regex.test(str);
+				}
+				// 使用示例
+				console.log(isChinaTelecomMobile("13312345678")); // true
+				console.log(isChinaTelecomMobile("18923456789")); // true
+				console.log(isChinaTelecomMobile("11123456789")); // false
+				console.log(isChinaTelecomMobile("1331234567")); // false (不足11位)
+				console.log(isChinaTelecomMobile("13312345678abc")); // false (包含非数字字符)
+				
+				// 利用邮箱提取号码
+				console.log("5.qq号码提取，运行后结果");
+				function extractQQFromEmail(email) {
+				  // 定义QQ邮箱的正则表达式模式
+				  const qqEmailPattern = /^(\d+)@qq.com$/;
+				  // 使用正则表达式匹配邮箱地址
+				  const match = email.match(qqEmailPattern);
+				  // 如果匹配成功，返回QQ号码
+				  if (match) {
+				    return match[1];
+				  }
+				  // 否则返回null
+				  return null;
+				}
+				// 测试用例
+				console.log(extractQQFromEmail('123456@qq.com')); // 输出: 123456
+				console.log(extractQQFromEmail('example@gmail.com')); // 输出: null
+			
+			
+				// 产生随机数
+				console.log("6.运行后结果");
+				// 因为random函数只能创建0到1的浮点数，所以需要将其进行一些运算
+				var randomNumber=Math.floor(Math.random()*10/4)+1;
+				console.log(randomNumber);
+				
+				console.log("7.运行后结果");
+				var x=1;
+				function A(y){
+					var x=2;
+					function B(z){
+						console.log(x+y+z);
+					}
+					return B;
+				}
+				var C=A(2);
+				C(3);
+		</script>
+	</body>
+</html>

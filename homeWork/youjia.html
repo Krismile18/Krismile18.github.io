@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#getWeatherButton').click(function () {
+                const province = $('#cityName').val().trim();
+                const appId = 'o9epa8ohrrszomut';
+                const appSecret = '5NK0aaSQsr073SCe7sjQBbWtdMMYkvZQ';
+                if (!cityName) {
+                    $('#weatherResult').html('<p>Please enter a city name.</p>');
+                    return;
+                }
+                async function a2() {
+                    var url= `https://www.mxnzp.com/api/oil/search?province=${encodeURIComponent(province)}&app_id=${appId}&app_secret=${appSecret}`
+                    // var url = 'https://www.mxnzp.com/api/oil/search?${encodeURIComponent(cityName)}?app_id=${appId}&app_secret=${appSecret}';
+                    const rep = await fetch(url);
+                    const result = await rep.json();
+                    return result;
+                }
+                a2().then(r => {
+                    console.log(r);
+                    var r=r.data;
+                    const html = `
+                            <table>
+                                <tr><th>城市：</th><td>${r.province}</td></tr>
+                                <tr><th>t0：</th><td>${r.t0}</td></tr>
+                                <tr><th>t89：</th><td>${r.t89}</td></tr>
+                                <tr><th>t92：</th><td>${r.t92}</td></tr>   
+                                <tr><th>t95：</th><td>${r.t95}</td></tr>
+                                <tr><th>t98：</th><td>${r.t98}</td></tr>
+                            </table>
+                        `;
+                        $('#weatherResult').html(html);
+            });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>获取当地每日油价信息</h1>
+    <input type="text" id="cityName" placeholder="Enter city name">
+    <button id="getWeatherButton">发送</button>
+    <pre id="weatherResult"></pre>
+</body>
+
+</html>

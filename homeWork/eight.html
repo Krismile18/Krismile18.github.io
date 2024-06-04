@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>无标题文档</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0
+        }
+  /* 定义内容容器的样式 */
+        .content {
+            width: 50%;
+            height: 100%;
+            background-color: #f0f0f0;
+            margin: auto;
+        }
+/* 定义左右两侧广告的样式 */
+        #adleft,
+        #adright {
+            width: 150px;
+            height: 350px;
+            font: 14px/20px arial;
+            text-align: center;
+            background: #06c;
+            position: absolute; /* 绝对定位 */
+            cursor: pointer;
+            color: #fff
+        }
+
+        #adwindow {
+            right: 20px;
+            width: 300px;
+            height: 200px;
+            bottom: 0px;
+            font: 14px/20px arial;
+            text-align: center;
+            background: #06c;
+            position: absolute; /* 绝对定位 */
+            cursor: pointer;
+            color: #fff
+        }
+  
+        #adleft {
+            left: 0;
+            top: 250px;
+        }
+
+        #adright {
+            right: 0;
+            top: 250px;
+        }
+ /* 定义广告图片的样式 */
+        #adleft img,
+        #adright img,
+        #adwindow img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .Adwindow span {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+    <script>
+        //滚动
+        window.onload = function () {
+            var adleft = document.getElementById("adleft");
+            var adright = document.getElementById("adright");
+            var adwindow = document.getElementById("adwindow");
+            // 获取adleft的原始top值
+            var adtop = adleft.offsetTop;
+             // 获取adwindow的原始top
+            var adtopwindow = adwindow.offsetTop;
+
+            // 当页面滚动时，更新广告的top值，使其随页面滚动而移动
+            window.onscroll = function () {
+                adleft.style.top = adtop + (document.documentElement.scrollTop || document.body.scrollTop) + "px";
+                adright.style.top = adtop + (document.documentElement.scrollTop || document.body.scrollTop) + "px";
+                adwindow.style.top = adtopwindow + (document.documentElement.scrollTop || document.body.scrollTop) + "px";
+            }
+        }
+
+
+        //关闭广告
+        function closead(side) {
+            var ad = document.getElementById("ad" + side);
+            ad.style.display = "none";
+        }
+
+    </script>
+</head>
+
+<body style="height:2000px;">
+
+    <div class="content">
+    旅行汽车
+    </div>
+
+    <div id="adleft">左边广告
+        <img src="/img/理想L9.jpg" alt="窗口广告">
+        <span><a href="https://www.lixiang.com/L9#li" onclick="closead('left');">关闭</a></span>
+    </div>
+
+    <div id="adright">右边广告
+        <img src="/img/沃尔沃.webp" alt="窗口广告">
+        <span><a href="https://www.volvocars.com.cn/zh-cn/cars/xc90-hybrid/interior-design/" onclick="closead('right');">关闭</a></span>
+    </div>
+
+    <div id="adwindow">广告窗口
+        <span><a href="https://www.audi.cn/zh/models/a/a6/a6_avant.html" onclick="closead('window');">关闭</a></span>
+        <img src="/img/aodi.jpg" alt="窗口广告">
+    </div>
+</body>
+
+</html>

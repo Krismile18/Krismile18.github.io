@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>DOM操作-练习</title>
+	<style type="text/css">
+		body {
+			font-size: 13px;
+			line-height: 25px;
+		}
+
+		table {
+			border-top: 1px solid #333;
+			border-left: 1px solid #333;
+			width: 300px;
+		}
+
+		td {
+			border-right: 1px solid #333;
+			border-bottom: 1px solid #333;
+		}
+
+		.center {
+			text-align: center;
+		}
+	</style>
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script>
+	  // 声明一个变量row，用于记录当前的行数
+	  var row = 4;
+	
+	  // addRow函数用于在表格中添加一行
+	  function addRow() {
+		// 使用jQuery的append方法在表格中添加一行
+		// 每一行的id是动态生成的，格式为row加上当前的row变量值
+		// 例如，第一次调用addRow时，会添加id为row4的行
+		// 行中包含两个单元格，第一个单元格包含文本“三体”，第二个单元格包含价格信息
+		$('table').append('<tr id="row' + row + '"><td>三体</td><td class="center">&yen;65.00</td></tr>');
+		// 每次添加行后，row变量的值增加1
+		row++;
+	  };
+	
+	  // delRow函数用于删除表格中的第三行
+	  function delRow() {
+		// 使用detach方法移除表格中的第三行
+		// nth-child选择器用于选择特定的行
+		$('tr:nth-child(3)').detach();
+	  };
+	
+	  // updateRow函数用于更新表格中第一行的样式
+	  function updateRow() {
+		// 使用css方法将第一行的文本颜色设置为红色
+		// 选择id为row1的行，即表格的第一行
+		$('#row1').css('color', 'red');
+	  };
+	
+	  // copyRow函数用于复制表格中的最后一行
+	  function copyRow() {
+		// 使用clone方法复制最后一行
+		// 然后将复制的行添加到表格中
+		$('table').append($("tr:last-child").clone());
+	  };	
+	</script>
+	</script>
+</head>
+
+<body>
+	<table border="0" cellspacing="0" cellpadding="0" id="myTable">
+		<tr id="row1">
+			<td>书名</td>
+			<td>价格</td>
+		</tr>
+		<tr id="row2">
+			<td>看得见风景的房间</td>
+			<td class="center">&yen;30.00</td>
+		</tr>
+		<tr id="row3">
+			<td>60个瞬间</td>
+			<td class="center">&yen;32.00</td>
+		</tr>
+	</table>
+	<input name="b1" type="button" value="增加一行" onclick="addRow()" />
+	<input name="b2" type="button" value="删除第2行" onclick="delRow()" />
+	<input name="b3" type="button" value="修改标题样式" onclick="updateRow()" />
+	<input name="b4" type="button" value="复制最后一行" onclick="copyRow()" />
+
+</body>
+
+</html>

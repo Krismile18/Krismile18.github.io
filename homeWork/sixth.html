@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>让坦克开起来</title>
+    <style type="text/css">
+        input {
+            font-size: 0;
+            margin-top: 0;
+        }
+
+        body {
+            background-image: url(../img/grassland.png);
+        }
+
+        #mytank {
+            position: absolute;
+            left: 0px;
+            top: 0px
+        }
+    </style>
+</head>
+
+<body>
+    <img id="mytank" src="../img/right.png" style="position: absolute; transition: transform 0.3s ease-out;" />
+    <!-- 邱光雄
+        219970825
+        21Java1班 -->
+    <script>
+        var tank = document.getElementById("mytank");
+        var position = { x: 0, y: 0 };
+        var rotation = 0; // 用于存储当前旋转角度
+        var leftmin = 0;// 定义X轴的最小值
+        var topmin = 0;// 定义Y轴的最小值
+        var rightmax = 1200; // 定义X轴的最大值
+        var downmax = 600; // 定义Y轴的最大值
+        // keydown用于获取键盘按键
+        document.addEventListener('keydown', function (event) {
+            //判断输入的是否时上键
+            if (event.key == 'ArrowUp' || event.key == 'w' || event.key == 'W') {
+                if (position.y > -topmin) { // 检查是否超出Y轴的边界
+                    position.y -= 10;
+                    rotation = -90;
+                }
+            } else if (event.key == 'ArrowDown' || event.key == 's' || event.key == 'S')  //判断输入的是否时下键
+            {
+                if (position.y < downmax) { // 检查是否超出Y轴的边界
+                    position.y += 10;
+                    rotation = 90;
+                }
+            } else if (event.key == 'ArrowLeft' || event.key == 'a' || event.key == 'A')  //判断输入的是否时左键
+            {
+                if (position.x > -leftmin) { // 检查是否超出X轴的边界
+                    position.x -= 10;
+                    rotation = 180;
+                }
+            }
+            else if (event.key == 'ArrowRight' || event.key == 'd' || event.key == 'D')  //判断输入的是否时右键
+            {
+                if (position.x < rightmax) { // 检查是否超出X轴的边界
+                    position.x += 10;
+                    rotation = 0;
+                }
+            }
+            // 坦克的图片位置
+            tank.style.left = position.x + 'px';
+            tank.style.top = position.y + 'px';
+            tank.style.transform = 'rotate(' + rotation + 'deg)';
+        });
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>

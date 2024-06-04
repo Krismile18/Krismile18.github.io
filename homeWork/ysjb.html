@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Call</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+            $(document).ready(function() {
+                $('#getWeatherButton').click(function() {
+                    const cityName = $('#cityName').val().trim();
+                    const appId = 'o9epa8ohrrszomut';
+                const appSecret = '5NK0aaSQsr073SCe7sjQBbWtdMMYkvZQ';
+                    if (!cityName) {
+                        $('#weatherResult').html('<p>Please enter a city name.</p>');
+                        return;
+                    }
+                    const url = `https://www.mxnzp.com/api/weather/current/${encodeURIComponent(cityName)}?app_id=${appId}&app_secret=${appSecret}`;
+                    $.get(url, function(data) {
+                        if (data.code !== 1) {
+                            $('#weatherResult').html(`<p>Error: ${data.msg}</p>`);
+                            return;
+                        }
+    
+                        const weather1 = data.data;
+                        const html = `
+                            <table>
+                                <tr><th>城市：</th><td>${weather1.address}</td></tr>
+                                <tr><th>温度：</th><td>${weather1.temp}°C</td></tr>
+                                <tr><th>天气：</th><td>${weather1.weather}</td></tr>
+                            </table>
+                        `;
+                        $('#weatherResult').html(html);
+                    }).fail(function(jqXHR) {
+                        $('#weatherResult').html(`<p>Error: ${jqXHR.statusText} (${jqXHR.status})</p>`);
+                    });
+                });
+            });
+    </script>
+</head>
+<body>
+    <h1>获取天气信息</h1>
+    <input type="text" id="cityName" placeholder="Enter city name">
+    <button id="getWeatherButton">发送</button>
+    <pre id="weatherResult"></pre>
+</body>
+</html>

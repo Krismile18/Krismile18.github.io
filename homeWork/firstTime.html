@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>三角形、平行四边形、菱形</title>
+	</head>
+	<body>
+<!-- 		班级：21 Java1 班
+			学号：219970825
+			姓名：邱光雄 
+			-->
+		<script>
+			document.write("班级：21 Java1 班<br>");
+			document.write("学号：219970825<br>");
+			document.write("姓名：邱光雄<br>");
+			document.write("显示5行的三角形<br>");
+			// 定义三角形的高度
+			var height = 5;
+			// 循环输出三角形
+			for (var i = 1; i <= height; i++) {
+			    // 在每一行添加适当数量的空格
+			    for (var j = 1; j <= (height - i); j++) {
+			      document.write("&nbsp;");
+			    }
+			    // 在每一行添加适当数量的星号和空格
+			    for (var k = 1; k <= (2 * i - 1); k++) {
+					if(k%2==0)
+					{
+						  document.write("&nbsp;");
+					}else{
+						  document.write("*");
+					}
+			    }
+			    // 换行
+				document.write("<br>");
+			}
+			
+				
+		</script>
+		<script>
+			document.write("显示5行的平行四边形<br>");
+			// 定义平行四边形的高
+			var height = 5;
+			// 循环输出每一行
+			for(var i = 1 ; i <= height ; i++){
+				var row=' ';
+				// 每一行前面的空格
+				for(var j=1;j<=5-i;j++)
+				{
+					  document.write("&nbsp;");
+				}
+				// 每一行的*和空格
+				for(var k=1;k<=height;k++)
+				{
+					document.write("*");
+					document.write("&nbsp;");
+				}
+				// 换行
+				document.write("<br>");
+			}
+			
+		</script>
+		<script>
+			document.write("显示5行的菱形<br>");
+			// 定义菱形的高
+			var height = 5;
+			for(var i = 1 ; i <= height ; i++){
+				var k=i;
+				// 将菱形分为两部分，将下半部分转化为上半部分
+				if(i==4){
+					k=2;
+				}
+				if(i==5){
+					k=1;
+				}
+				// 每一行前面的空格
+				for(var j=1;j<=4-(k-1)*2;j++){
+					document.write("&nbsp;");
+				}
+				// 在每一行添加适当数量的星号和空格
+				for(var j=1;j<=k*2-1;j++){
+					document.write("*");
+					document.write("&nbsp;");
+				}
+				// 换行
+				document.write("<br>");
+			}	
+		</script>
+	</body>
+</html>
