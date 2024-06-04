@@ -1,0 +1,94 @@
+/* styles.css */
+
+/* 设置全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/10.jpg'); /* 替换为你的绿色背景图片路径 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 容器样式 */
+.container {
+    background-color: rgba(255, 255, 255, 0.4); /* 淡绿色透明背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    position: relative;
+    right: -400px;
+}
+
+/* 标题样式 */
+h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* 表单组样式 */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* 标签样式 */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 按钮样式 */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* 按钮悬停样式 */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 消息显示样式 */
+#message {
+    margin-top: 20px;
+    color: red;
+    display: none;
+}
+
+/* 验证码样式 */
+.captcha-code {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    user-select: none;
+}
